@@ -76,7 +76,19 @@ class FriendController extends Controller
      */
     public function show($id)
     {
-        //
+        $friend = User::find($id);
+        $json = [
+                'id' => $friend->id,
+                'name' => $friend->name,
+                'email' => $friend->email,
+                'thumb_url' => $friend->thumb_url,
+                'about' => $friend->about,
+                'posts' => Post::where('authour_id', $friend->id)->get()
+
+            ];
+
+        return response()->json($json);
+
     }
 
     /**
