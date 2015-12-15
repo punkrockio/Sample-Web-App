@@ -1,10 +1,10 @@
 <?php
 return [
-    'name' => "L5 Beauty",
-    'title' => "Laravel 5.1 Beauty",
-    'subtitle' => 'A clean blog written in Laravel 5.1',
+    'name' => "Rock.ai",
+    'title' => "Rock.ai",
+    'subtitle' => 'So fresh. So clean.',
     'description' => 'This is my meta description',
-    'author' => 'Chuck Heintzelman',
+    'author' => 'Nick Mitchell',
     'page_image' => 'home-bg.jpg',
     'posts_per_page' => 10,
     'rss_size' => 25,

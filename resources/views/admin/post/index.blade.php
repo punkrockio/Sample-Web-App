@@ -1,11 +1,31 @@
-@extends('admin.layout')
+@extends('admin.adminlayout')
+
+
+@section('breadcrumbs')
+  <h1>Articles</h1>
+
+  <ul>
+
+    <li>
+      <a href='/admin'>
+        <i class="fa fa-home"></i>
+        <!-- Dashboard -->
+      </a>  <i class='fa fa-angle-right'></i>
+    </li>
+    <li>
+      <a href='#'>Posts</a>  <!-- <i class='fa fa-angle-right'></i> -->
+    </li>
+    
+  </ul>
+@endsection
+
 
 @section('content')
   <div class="container-fluid">
-    <div class="row page-title-row">
-      <div class="col-md-6">
+    <div class="row page-title-row" style="margin-bottom: 10px;">
+      <!-- <div class="col-md-6">
         <h3>Posts <small>&raquo; Listing</small></h3>
-      </div>
+      </div> -->
       <div class="col-md-6 text-right">
         <a href="/admin/post/create" class="btn btn-success btn-md">
           <i class="fa fa-plus-circle"></i> New Post
@@ -36,15 +56,17 @@
               </td>
               <td>{{ $post->title }}</td>
               <td>{{ $post->subtitle }}</td>
-              <td>
-                <a href="/admin/post/{{ $post->id }}/edit"
-                   class="btn btn-xs btn-info">
-                  <i class="fa fa-edit"></i> Edit
-                </a>
-                <a href="/blog/{{ $post->slug }}"
-                   class="btn btn-xs btn-warning">
-                  <i class="fa fa-eye"></i> View
-                </a>
+              <td style="width:121px">
+                <div class="btn-group" style="width: 100%">
+                  <a href="/admin/post/{{ $post->id }}/edit"
+                     class="btn btn-xs btn-info" style="width: 40%; padding:0px">
+                    <i class="fa fa-edit"></i> <!-- Edit -->
+                  </a>
+                  <a href="/blog/{{ $post->slug }}"
+                     class="btn btn-xs btn-warning" style="width: 40%; padding:0px">
+                    <i class="fa fa-eye"></i> <!-- View -->
+                  </a>
+                </div>
               </td>
             </tr>
           @endforeach
@@ -59,9 +81,11 @@
 @section('scripts')
   <script>
     $(function() {
+      /*
       $("#posts-table").DataTable({
         order: [[0, "desc"]]
       });
+      */
     });
   </script>
 @stop

@@ -5,11 +5,11 @@ namespace App\Http\Controllers\Auth;
 use App\User;
 use Validator;
 use App\Http\Controllers\Controller;
-use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 
 class AuthController extends Controller
 {
-    use AuthenticatesUsers;
+    use AuthenticatesAndRegistersUsers;
 
     protected $redirectAfterLogout = '/auth/login';
     protected $redirectTo = '/admin/post';
@@ -36,4 +36,22 @@ class AuthController extends Controller
             'password' => 'required|confirmed|min:6',
         ]);
     }
+
+
+    /**
+    * Create a new user instance after a valid registration.
+    *
+    * @param  array  $data
+    * @return User
+    */
+   protected function create(array $data)
+   {
+       return User::create([
+           'name' => $data['name'],
+           'email' => $data['email'],
+           'password' => bcrypt($data['password']),
+       ]);
+   }
+
+   
 }

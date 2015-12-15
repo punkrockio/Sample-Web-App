@@ -29,7 +29,7 @@
       </button>
       <a class="navbar-brand" href="#">{{ config('blog.title') }} Admin</a>
     </div>
-    <div class="collapse navbar-collapse" id=navbar-menu">
+    <div class="collapse navbar-collapse" id="navbar-menu">
       @include('admin.partials.navbar')
     </div>
   </div>

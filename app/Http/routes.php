@@ -21,6 +21,7 @@ $router->group([
 ], function () {
     resource('admin/post', 'PostController', ['except' => 'show']);
     resource('admin/tag', 'TagController', ['except' => 'show']);
+    resource('admin/friend', 'FriendController', ['except' => 'show']);
     get('admin/upload', 'UploadController@index');
     post('admin/upload/file', 'UploadController@uploadFile');
     delete('admin/upload/file', 'UploadController@deleteFile');
@@ -32,3 +33,6 @@ $router->group([
 get('/auth/login', 'Auth\AuthController@getLogin');
 post('/auth/login', 'Auth\AuthController@postLogin');
 get('/auth/logout', 'Auth\AuthController@getLogout');
+
+get('/auth/register', 'Auth\AuthController@getRegister');
+post('/auth/register', 'Auth\AuthController@postRegister');
