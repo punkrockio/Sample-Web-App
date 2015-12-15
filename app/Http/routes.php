@@ -36,3 +36,16 @@ get('/auth/logout', 'Auth\AuthController@getLogout');
 
 get('/auth/register', 'Auth\AuthController@getRegister');
 post('/auth/register', 'Auth\AuthController@postRegister');
+
+
+// resource('api/user/{id}/friend', 'FriendController');
+// resource('api/friend', 'FriendController');
+
+$router->group([
+    'namespace' =>'Api',
+    'prefix' => 'api',
+    'middleware' => 'auth.api'
+], function(){
+    resource('user/{id}/friend', 'FriendController');
+    resource('friend', 'FriendController');
+});
