@@ -114,14 +114,16 @@ class FriendController extends Controller
      * @param  int  $id
      * @return Response
      */
-    public function destroy($id)
+    public function destroy($friendId)
     {
-        $friend = Friend::findOrFail($id);
-        // $friend->tags()->detach();
+        $friend = Friend::where(['user_id' => Auth::user()->id,'friend_id'=>$friendId])->first();
         $friend->delete();
 
-        return redirect()
+        /*
+            return redirect()
             ->route('admin.friend.index')
             ->withSuccess('Friend deleted.');
+        */
+        return response()->json(['msg'=>'Successfully deleted']);
     }
 }

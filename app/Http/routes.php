@@ -2,8 +2,13 @@
 
 // Blog pages
 get('/', function () {
-    return redirect('/blog');
+    return view('homepage');
+    // return redirect('/blog');
 });
+
+get('/friend/{id}/post', 'FriendController@getPosts');
+resource('/friend', 'FriendController');
+
 get('blog', 'BlogController@index');
 get('blog/{slug}', 'BlogController@showPost');
 $router->get('contact', 'ContactController@showForm');

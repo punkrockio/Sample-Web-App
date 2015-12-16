@@ -11,8 +11,14 @@ class Post extends Model
     protected $dates = ['published_at'];
     protected $fillable = [
         'title', 'subtitle', 'content_raw', 'page_image', 'meta_description',
-        'layout', 'is_draft', 'published_at',
+        'layout', 'is_draft', 'published_at', 'authour_id', 'thumb_url'
     ];
+
+    public function authour()
+    {
+        return $this->belongsTo('App\User', 'authour_id');
+    }
+
 
     /**
      * The many-to-many relationship between posts and tags.

@@ -168,7 +168,7 @@
               
               <td>
                 <!-- <img src="/theme/admin/assets/_con/images/user.jpg" class="circle" alt=""> -->
-                <img src="{{$mate->thumb_url}}" class="circle" alt="{{$mate->name}}">
+                <img src="{{$mate->thumb_url}}" class="circle" alt="{{$mate->name}}" style="max-width: 150px; max-height: 150px">
               </td>
               <td>
                 <a href="/admin/friend/{{$mate->id}}">
@@ -182,11 +182,15 @@
               <td> </td>
               <td>  </td>
               <td class="green-text"> 
-                <a href="/admin/friend/{{$mate->id}}/article">
+
+                <a href="/friend/{{$mate->id}}/post" target="_blank">
                   Articles 
                 </a>  
+
               </td>
-              <td><a href="/admin/friend/{{$mate->id}}" class="btn btn-small z-depth-0"><i class="mdi mdi-editor-mode-edit"></i></a>
+              <td>
+                <a href="/admin/friend/{{$mate->id}}" class="btn btn-small red z-depth-0 btnDelete" data-id="{{$mate->id}}"><i class="fa fa-times"></i></a>
+                <a href="/admin/friend/{{$mate->id}}" class="btn btn-small z-depth-0"><i class="mdi mdi-editor-mode-edit"></i></a>
               </td>
             </tr>
             @endforeach
@@ -223,6 +227,24 @@
 
   <!-- jQuery -->
   <script type="text/javascript" src="/theme/admin/assets/jquery/jquery.min.js"></script>
+
+  <script>
+  $('.btnDelete').click(function(e){
+
+    e.preventDefault();
+
+    var id = $(this).data('id');
+    $.ajax({
+      type:'delete',
+      url:'/admin/friend/'+id,
+      success: function(data){
+        alert(data.msg);
+        window.location.reload();
+      }
+    })
+
+  })
+  </script>
 
   <!-- jQuery RAF (improved animation performance) -->
   <script type="text/javascript" src="/theme/admin/assets/jqueryRAF/jquery.requestAnimationFrame.min.js"></script>
