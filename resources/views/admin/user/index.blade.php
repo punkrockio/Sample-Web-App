@@ -167,7 +167,7 @@
               
               <td>
                 <!-- <img src="/theme/admin/assets/_con/images/user.jpg" class="circle" alt=""> -->
-                <img src="{{$user->thumb_url}}" class="circle" alt="{{$user->name}}">
+                <img src="{{$user->thumb_url}}" class="circle" alt="{{$user->name}}" style="max-height: 150px; max-width: 150px;">
               </td>
               <td>
                 <a href="/admin/user/{{$user->id}}">

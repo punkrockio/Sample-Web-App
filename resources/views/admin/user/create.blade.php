@@ -149,7 +149,8 @@
 
     
     <form method="POST"
-          action="{{ route('admin.user.store') }}">
+          action="{{ route('admin.user.store') }}"
+          enctype="multipart/form-data">
 
       <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
@@ -217,11 +218,11 @@
               </label>
             </div>
             <div class="col s12 l9">
-            
+
               <div class="file-field input-field">
                 <input class="file-path" type="text" />
                 <div class="btn">
-                  <span>File</span>
+                  <span>Photo</span>
                   <input id="ecommerce-product-photos" type="file" name="photo" />
                 </div>
               </div>
@@ -239,7 +240,7 @@
             </div>
             <div class="col s12 l9">
 
-              <textarea id="ckeditor1" name="product-description"></textarea>
+              <textarea id="ckeditor1" name="about"></textarea>
 
             </div>
           </div>

@@ -4,10 +4,12 @@ namespace App\Http\Controllers\Admin;
 
 use App\Jobs\PostFormFields;
 use App\Http\Requests;
+use Illuminate\Http\Request;
 use App\Http\Requests\PostCreateRequest;
 use App\Http\Requests\PostUpdateRequest;
 use App\Http\Controllers\Controller;
 use App\Friend;
+use App\User;
 use Auth;
 
 class FriendController extends Controller
@@ -28,9 +30,20 @@ class FriendController extends Controller
      */
     public function create()
     {
-        $data = $this->dispatch(new PostFormFields());
 
-        return view('admin.friend.create', $data);
+        $thisUser = Auth::user();
+        $users = [];
+
+        foreach(User::where('id', '<>', $thisUser->id)->get() as $user){
+
+            $friend = Friend::where(['user_id'=>$thisUser->id, 'friend_id'=>$user->id])->first();
+
+            if($friend===null)
+                array_push($users, $user);
+
+        }
+
+        return view('admin.friend.create')->withUsers($users);
     }
 
     /**
@@ -38,9 +51,20 @@ class FriendController extends Controller
      *
      * @param PostCreateRequest $request
      */
-    public function store(PostCreateRequest $request)
+    public function store(Request $request)
     {
-        $friend = Friend::create($request->postFillData());
+        foreach($request->all() as $key => $val){
+            
+            if($key!=='_token'){
+
+                $friend = new Friend;
+                $friend->user_id = Auth::user()->id;
+                $friend->friend_id = $key;
+                $friend->save();
+                
+            }
+
+        }
 
         return redirect()
             ->route('admin.friend.index')

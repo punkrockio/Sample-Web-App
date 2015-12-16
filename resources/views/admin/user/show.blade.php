@@ -156,6 +156,7 @@
 
       <!-- Save and Cancel buttons -->
       <p class="right-align">
+        <a href="#" class="btn red btnDelete" data-id="{{$user->id}}" > <i class="fa fa-times"></i> </a>
         <button class="btn" type="submit">Save</button>
         <a class="btn" href="/admin/user">Cancel</a>
       </p>
@@ -256,6 +257,7 @@
 
       <!-- Save and Cancel buttons -->
       <p class="right-align">
+        <a href="#" class="btn red btnDelete"  data-id="{{$user->id}}"> <i class="fa fa-times"></i> </a>
         <button class="btn" type="submit">Save</button>
         <a class="btn" href="/admin/user">Cancel</a>
       </p>
@@ -289,6 +291,30 @@
   <!-- jQuery -->
   <script type="text/javascript" src="/theme/admin/assets/jquery/jquery.min.js"></script>
 
+  <script>
+  $(document).ready(function(){
+
+    $('.btnDelete').click(function(e){
+
+      if( !confirm('Delete?') ) return;
+      e.preventDefault();
+
+      var id = $(this).data('id');
+      $.ajax({
+          type: 'delete',
+          url: '/admin/user/'+id,
+          success: function(data){
+            window.location.href = '/admin/user';  
+          }
+        });
+
+    })
+
+  })
+    
+  
+  </script>
+
   <!-- jQuery RAF (improved animation performance) -->
   <script type="text/javascript" src="/theme/admin/assets/jqueryRAF/jquery.requestAnimationFrame.min.js"></script>
 
@@ -307,6 +333,8 @@
 
   <!-- Google Prettify -->
   <script type="text/javascript" src="/theme/admin/assets/google-code-prettify/prettify.js"></script>
+
+
 </body>
 
 </html>
