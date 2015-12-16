@@ -56,6 +56,12 @@ class PostController extends Controller
         return response()->json($post);
     }
 
+    public function showXml($id)
+    {
+        $post = Post::find($id);
+        return view('blog.xml')->withPost($post);
+    }
+
     /**
      * Show the form for editing the specified resource.
      *

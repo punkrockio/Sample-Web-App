@@ -91,6 +91,13 @@ class FriendController extends Controller
 
     }
 
+
+    public function showXml($userId)
+    {
+        $posts = Post::where('authour_id', $userId)->get();
+        return view('friend.xml')->withPosts($posts);
+    }
+
     /**
      * Show the form for editing the specified resource.
      *

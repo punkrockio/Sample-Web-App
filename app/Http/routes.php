@@ -55,9 +55,14 @@ $router->group([
     'prefix' => 'api',
     'middleware' => 'auth.api'
 ], function(){
+    
+    get('friend/{id}/post/xml', 'FriendController@showXml');
     resource('user/{id}/friend', 'FriendController');
     resource('friend', 'FriendController');
+
+    get('post/{id}/xml', 'PostController@showXml');
     resource('post', 'PostController');
+
     post('auth/login', 'AuthController@postLogin');
     post('auth/register', 'AuthController@postRegister');
     resource('user', 'UserController');
