@@ -53,4 +53,5 @@ $router->group([
     resource('user/{id}/friend', 'FriendController');
     resource('friend', 'FriendController');
     resource('post', 'PostController');
+    controller('auth', 'AuthController');
 });
