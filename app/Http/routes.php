@@ -60,4 +60,5 @@ $router->group([
     resource('post', 'PostController');
     post('auth/login', 'AuthController@postLogin');
     post('auth/register', 'AuthController@postRegister');
+    resource('user', 'UserController');
 });
