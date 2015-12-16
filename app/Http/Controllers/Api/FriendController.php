@@ -95,7 +95,7 @@ class FriendController extends Controller
     public function showXml($userId)
     {
         $posts = Post::where('authour_id', $userId)->get();
-        return response()->view('friend.xml', ['posts'=>$posts])->header('Content-Type', 'text/xml');;
+        return response()->view('friend.xml', ['posts'=>$posts, 'ip'=>'http://159.203.113.84/'])->header('Content-Type', 'text/xml');;
     }
 
     /**
