@@ -112,9 +112,9 @@
             <ul class="left">
               <li><a href="/admin">Dashboard</a>
               </li>
-              <li class="active"><a href="/admin/post">Posts</a>
+              <li class="active"><a href="/admin/friend">Friends</a>
               </li>
-              <li><a href="/admin/friend">Friends</a>
+              <li><a href="/admin/friend/create">Add</a>
               </li>
             </ul>
           </nav>
@@ -157,12 +157,13 @@
           </thead>
           <tbody>
 
+            <?php $i = 1; ?>
             @foreach($friends as $friend)
             <?php $mate = $friend->friend() ?>
             <tr>
               <th>
-                <input type="checkbox" id="checkbox1" />
-                <label for="checkbox1"></label>
+                <input type="checkbox" id="checkbox{{$i}}" />
+                <label for="checkbox{{$i++}}"></label>
               </th>
               
               <td>

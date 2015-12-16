@@ -8,6 +8,7 @@ use Illuminate\Auth\Passwords\CanResetPassword;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
 use App\Friend;
+use App\Post;
 
 class User extends Model implements AuthenticatableContract, CanResetPasswordContract
 {
@@ -37,5 +38,10 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
     public function friends()
     {
         return Friend::where('friend_id', $this->id)->get();
+    }
+
+    public function posts()
+    {
+        return $this->hasMany('App\Post', 'authour_id');
     }
 }

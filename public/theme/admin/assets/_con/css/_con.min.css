@@ -51,3 +51,17 @@ a, a:hover{
   width: 100%;
   background: rgba(0,0,0,.7);
 }
+
+
+ .setting-title {
+    font-size: 1.2rem;
+    line-height: 3rem;
+    color: inherit;
+}
+
+.input-field label.active {
+    font-size: .8rem;
+    -webkit-transform: translateY(-140%);
+    -ms-transform: translateY(-140%);
+    transform: translateY(-140%);
+}

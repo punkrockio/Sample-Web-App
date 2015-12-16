@@ -17,16 +17,20 @@ get('admin', function () {
 });
 $router->group([
     'namespace' => 'Admin',
+    'prefix' => 'admin',
     'middleware' => 'auth',
 ], function () {
-    resource('admin/post', 'PostController', ['except' => 'show']);
-    resource('admin/tag', 'TagController', ['except' => 'show']);
-    resource('admin/friend', 'FriendController', ['except' => 'show']);
-    get('admin/upload', 'UploadController@index');
-    post('admin/upload/file', 'UploadController@uploadFile');
-    delete('admin/upload/file', 'UploadController@deleteFile');
-    post('admin/upload/folder', 'UploadController@createFolder');
-    delete('admin/upload/folder', 'UploadController@deleteFolder');
+    resource('post', 'PostController', ['except' => 'show']);
+    resource('tag', 'TagController', ['except' => 'show']);
+    resource('friend', 'FriendController', ['except' => 'show']);
+    get('upload', 'UploadController@index');
+    post('upload/file', 'UploadController@uploadFile');
+    delete('upload/file', 'UploadController@deleteFile');
+    post('upload/folder', 'UploadController@createFolder');
+    delete('upload/folder', 'UploadController@deleteFolder');
+
+    get('user/{id}/post', 'UserController@showArticles');
+    resource('user', 'UserController');
 });
 
 // Logging in and out
