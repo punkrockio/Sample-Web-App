@@ -56,7 +56,7 @@ $router->group([
     'middleware' => 'auth.api'
 ], function(){
     
-    get('friend/{id}/post/xml', 'FriendController@showXml');
+    get('friend/{id}/post.xml', 'FriendController@showXml');
     resource('user/{id}/friend', 'FriendController');
     resource('friend', 'FriendController');
 
