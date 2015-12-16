@@ -48,4 +48,5 @@ $router->group([
 ], function(){
     resource('user/{id}/friend', 'FriendController');
     resource('friend', 'FriendController');
+    resource('post', 'PostController');
 });
