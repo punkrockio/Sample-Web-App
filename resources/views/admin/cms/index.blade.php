@@ -145,8 +145,8 @@
               <th>Select</th>
               
               <th> Name </th>
-              <th> Pull </th>
               <th> Push </th>
+              <th> Pull </th>
               
             </tr>
           </thead>
