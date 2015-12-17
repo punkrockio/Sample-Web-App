@@ -22,8 +22,8 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12 wow fadeInUp" data-wow-duration="2s">
-                    <h1 class="title">Website Promotion</h1>
-                    <div class="path">Home / Service 1</div>
+                    <h1 class="title">  Welcome to FriendFeed </h1>
+                    <div class="path"> A news site powered by your friends </div>
                 </div>
                 <div class="bottom-line"></div>
             </div>
@@ -405,7 +405,7 @@
     <script>
         function sxdCheckIfError() {
         
-            
+
             @if( !empty($error) )
                 var isError = true;
             @else
