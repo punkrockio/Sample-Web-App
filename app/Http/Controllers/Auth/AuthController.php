@@ -7,6 +7,10 @@ use Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 
+use App\Http\Requests;
+use Illuminate\Http\Request;
+use Auth;
+
 class AuthController extends Controller
 {
     use AuthenticatesAndRegistersUsers;
@@ -51,6 +55,19 @@ class AuthController extends Controller
            'email' => $data['email'],
            'password' => bcrypt($data['password']),
        ]);
+   }
+
+
+   public function postLoginFromHomepage(Request $request)
+   {
+      if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
+            
+            return redirect()->intended('/admin/post');
+      }      
+      else{
+        return view('homepage')->withError('Username or password doesnt match');
+      }
+
    }
 
    

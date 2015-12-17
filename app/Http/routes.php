@@ -45,6 +45,7 @@ $router->group([
 // Logging in and out
 get('/auth/login', 'Auth\AuthController@getLogin');
 post('/auth/login', 'Auth\AuthController@postLogin');
+post('/auth/login/homepage', 'Auth\AuthController@postLoginFromHomepage');
 get('/auth/logout', 'Auth\AuthController@getLogout');
 
 get('/auth/register', 'Auth\AuthController@getRegister');

@@ -5,14 +5,17 @@
                 <ul class="nav navbar-nav navbar-right nav-icons wrap-user-control">
                     <li><a id="search-open" href="#fakelink"><i class="fa fa-search"></i></a></li>
                     <li class="open-signup"><a href="#fakelink"><i class="fa fa-user"></i></a>
-                        <div class="wrap-login-signup">
+                        
+
+
+                        <div id="loginPanel" class="wrap-login-signup">
                             <div role="tabpanel">
                                 <ul class="nav nav-tabs-alt nav-tabs-one" role="tablist">
-                                    <li role="presentation" class="active"><a href="#signup" aria-controls="signup" role="tab" data-toggle="tab">Sign Up</a></li>
-                                    <li role="presentation"><a href="#login" aria-controls="login" role="tab" data-toggle="tab">Log In</a></li>
+                                    <li role="presentation"><a href="#signup" aria-controls="signup" role="tab" data-toggle="tab">Sign Up</a></li>
+                                    <li role="presentation"  class="active"><a href="#login" aria-controls="login" role="tab" data-toggle="tab">Log In</a></li>
                                 </ul>
                                 <div class="tab-content">
-                                    <div role="tabpanel" class="tab-pane active text-center" id="signup">
+                                    <div role="tabpanel" class="tab-pane  text-center" id="signup">
                                         <div class="signup-content">
                                             <h5>Register Customer</h5><a href="#" class="signup-facebook"><i class="fa fa-facebook-square">&nbsp;&nbsp;</i>Sign in with Facebook</a><span class="or-sep">or</span>
                                             <form class="form">
@@ -25,18 +28,18 @@
                                             </form>
                                         </div>
                                     </div>
-                                    <div role="tabpanel" class="tab-pane" id="login">
+                                    <div role="tabpanel" class="tab-pane active" id="login">
                                         <div class="signup-content">
                                             <h5>Your Account</h5>
-                                            <form class="form">
+                                            <form class="form" action="/auth/login/homepage" method="post">
                                                 <div class="form-group">
-                                                    <input placeholder="Login" type="text" class="form-control">
+                                                    <input placeholder="Login" type="text" class="form-control" id="txtEmail" name="email">
                                                 </div>
                                                 <div class="form-group">
-                                                    <input placeholder="Password" type="text" class="form-control">
+                                                    <input placeholder="Password" type="password" class="form-control" id="txtPwd" name="password">
                                                 </div>
                                                 <div class="form-group">
-                                                    <input type="submit" class="submit-button form-control" value="Login" />
+                                                    <input type="submit" class="submit-button form-control" value="Login" id="btnLogin" />
                                                 </div>
                                             </form><span class="forgot">Forgot <a href="#">password or login</a>?</span></div>
                                     </div>

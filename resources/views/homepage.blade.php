@@ -396,6 +396,47 @@
 
     <script src="/theme/home/assets/js/jquery-1.11.1.min.js"></script>
     <script src="https://code.jquery.com/ui/1.11.3/jquery-ui.js"></script>
+
+    <style>
+        .red{
+            border: 1px solid red !important;
+        }
+    </style>
+    <script>
+        function sxdCheckIfError() {
+        
+            
+            @if( !empty($error) )
+                var isError = true;
+            @else
+                var isError = false;
+            @endif
+
+            
+            var loginPanel = $('#loginPanel'),
+                txtEmail = $('#txtEmail'),
+                txtPwd = $('#txtPwd'),
+                btnLogin = $('#btnLogin');
+
+                if(isError){
+                    loginPanel.slideDown();
+                    txtEmail.addClass('red');
+                    txtPwd.addClass('red');
+                    shakeForm(btnLogin);
+                }
+
+        }
+        function shakeForm(btn) {
+            var l = 20;  
+            for( var i = 0; i < 10; i++ )   
+            btn.animate( { 
+                'margin-left': "+=" + ( l = -l ) + 'px',
+                'margin-right': "-=" + l + 'px'
+            }, 80);  
+
+        }
+    </script>    
+
     <script src="/theme/home/assets/js/bootstrap.min.js"></script>
     <script src="/theme/home/assets/js/jquery.mb.YTPlayer.js"></script>
     <script src="/theme/home/assets/js/isotope.pkgd.min.js"></script>
@@ -416,6 +457,8 @@
     <script src="/theme/home/assets/js/highcharts.js"></script>
     <script src="/theme/home/assets/js/Chart.min.js"></script>
     <script src="/theme/home/assets/js/custom.js"></script>
+
+
 </body>
 
 </html>
