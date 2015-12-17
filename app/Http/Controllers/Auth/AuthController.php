@@ -15,7 +15,7 @@ class AuthController extends Controller
 {
     use AuthenticatesAndRegistersUsers;
 
-    protected $redirectAfterLogout = '/auth/login';
+    protected $redirectAfterLogout = '/';
     protected $redirectTo = '/admin/post';
 
     /**
