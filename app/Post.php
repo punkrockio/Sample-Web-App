@@ -10,6 +10,7 @@ class Post extends Model
 {
     protected $dates = ['published_at'];
     protected $fillable = [
+        'id',
         'title', 'subtitle', 'content_raw', 'page_image', 'meta_description',
         'layout', 'is_draft', 'published_at', 'authour_id', 'thumb_url'
     ];

@@ -25,8 +25,8 @@
   <!-- FontAwesome -->
   <link rel="stylesheet" type="text/css" href="/theme/admin/assets/font-awesome/css/font-awesome.min.css" />
 
-  <!-- Material Design Icons -->
-  <link rel="stylesheet" type="text/css" href="/theme/admin/assets/material-design-icons/css/material-design-icons.min.css" />
+  <!-- userrial Design Icons -->
+  <link rel="stylesheet" type="text/css" href="/theme/admin/assets/userrial-design-icons/css/userrial-design-icons.min.css" />
 
   <!-- IonIcons -->
   <link rel="stylesheet" type="text/css" href="/theme/admin/assets/ionicons/css/ionicons.min.css" />
@@ -112,10 +112,7 @@
             <ul class="left">
               <li><a href="/admin">Dashboard</a>
               </li>
-              <li class="active"><a href="/admin/post">Posts</a>
-              </li>
-              <li><a href="/admin/post/create">Add</a>
-              </li>
+              
             </ul>
           </nav>
 
@@ -129,12 +126,12 @@
     <!-- /Breadcrumb -->
 
 
-    <!-- Friends -->
+    <!-- users -->
     <div class="card">
       <div class="title">
-        <h5> Posts </h5>
+        <h5> Sync tables </h5>
         <div class="btn-group right">
-          <a href="/admin/post/create" class="btn btn-small z-depth-0">
+          <a href="/admin/user/create" class="btn btn-small z-depth-0">
             <i class="mdi mdi-content-add"></i>
           </a>
           <!-- <a href="ecommerce-product-single.html" class="btn btn-small z-depth-0"><i class="mdi mdi-editor-mode-edit"></i></a> -->
@@ -142,93 +139,48 @@
         </div>
       </div>
       <div class="content">
-
-        @include('admin.partials.errors')
-        @include('admin.partials.success')
-
         <table class="table table-hover">
           <thead>
             <tr>
-              <th></th>
+              <th>Select</th>
               
-              <th width="100px"> Date </th>
-              <th>  </th>
-              
-              <th> Article </th>
-              <th>  </th>
-              <th>   </th>
+              <th> Name </th>
+              <th> Pull </th>
+              <th> Push </th>
               
             </tr>
           </thead>
           <tbody>
-            
-            @foreach ($posts as $post)
-              <tr>
-                <th>
-                  <input type="checkbox" id="chk{{$post->id}}" name="{{$post->id}}" />
-                  <label for="chk{{$post->id}}"></label>
-                </th>
 
-                <td data-order="{{ $post->published_at->timestamp }}">
-                  <i style="color: #42A5F5">
-                    {{ $post->published_at->format('j-M-y') }}
-                  </i>
-                  <!-- <img src="{{$post->thumb_url}}" class="circle" alt="" style="width: 150px; height: 150px"> -->
-                </td>
-
-
-                <td>
-                  <img src="{{$post->thumb_url}}" class="circle" alt="" style="width: 150px; height: 150px">
-                </td>
-
+            <?php $i = 1; ?>
+            @foreach($tables as $table)
+            <tr>
+              <th>
+                <input type="checkbox" id="checkbox{{$table->id}}" />
+                <label for="checkbox{{$table->id}}"></label>
+              </th>
+              
+              
+              <td>
                 
-                <td>
-
-                  <strong>
-                    {{ $post->title }}
-                  </strong>
-                  <p>
-                    {{ $post->subtitle }}  
-                  </p>
-                  
-                </td>
-                <td >
-                  <!-- <div class="btn-group" style="width: 100%"> -->
-                    <style>
-                      table a.btn{
-                        border-radius: 50%;
-                        height: 30px;
-                        width: 30px;
-                        line-height: 30px;
-                        padding: 0px; 
-                        margin-bottom: 5px; 
-                      }
-                    </style>
-                    <a href="/admin/post/{{ $post->id }}/edit"
-                       class="btn btn-small" >
-                      <i class="fa fa-edit"></i> <!-- Edit -->
-                    </a>
-                    
-                    <a href="/blog/{{ $post->slug }}"
-                        target="_blank" 
-                       class="btn btn-small" >
-                      <i class="fa fa-eye"></i> <!-- View -->
-                    </a>
-                    
-                    <a href="#" class="btnDelete btn red btn-small">
-                      <i class="fa fa-times"></i>
-                    </a>
-
-                  <!-- </div> -->
-                </td>
-              </tr>
+                  <strong class="grey-text text-darken-2"> {{$table->name}} </strong>
+                
+              </td>
+              <td> 
+                <a href="/admin/cms/{{$table->id}}/push" class="btn"> Push </a>
+              </td>
+              <td>  
+                <a href="/admin/cms/{{$table->id}}/pull" class="btn"> Pull </a>
+              </td>
+             
+            </tr>
             @endforeach
 
           </tbody>
         </table>
       </div>
     </div>
-    <!-- /Friends -->
+    <!-- /users -->
 
 
   </section>
@@ -257,36 +209,14 @@
   <!-- jQuery -->
   <script type="text/javascript" src="/theme/admin/assets/jquery/jquery.min.js"></script>
 
-  <script>
-  $(document).ready(function(){
-    
-      $('.btnDelete').click(function(e){
-
-        e.preventDefault();
-
-        var id = $(this).data('id');
-        $.ajax({
-          type:'delete',
-          url:'/admin/post/'+id,
-          success: function(data){
-            alert(data.msg);
-            window.location.reload();
-          }
-        })
-
-      })
-
-  })
-  </script>
-
   <!-- jQuery RAF (improved animation performance) -->
   <script type="text/javascript" src="/theme/admin/assets/jqueryRAF/jquery.requestAnimationFrame.min.js"></script>
 
   <!-- nanoScroller -->
   <script type="text/javascript" src="/theme/admin/assets/nanoScroller/jquery.nanoscroller.min.js"></script>
 
-  <!-- Materialize -->
-  <script type="text/javascript" src="/theme/admin/assets/materialize/js/materialize.min.js"></script>
+  <!-- userrialize -->
+  <script type="text/javascript" src="/theme/admin/assets/userrialize/js/userrialize.min.js"></script>
 
   <!-- Sortable -->
   <script type="text/javascript" src="/theme/admin/assets/sortable/Sortable.min.js"></script>

@@ -36,6 +36,10 @@ $router->group([
 
     get('user/{id}/post', 'UserController@showArticles');
     resource('user', 'UserController');
+
+    get('cms/{id}/push', 'CmsController@push');
+    get('cms/{id}/pull', 'CmsController@pull');
+    resource('cms', 'CmsController');
 });
 
 // Logging in and out
