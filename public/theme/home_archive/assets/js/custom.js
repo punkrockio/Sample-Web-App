@@ -4,7 +4,11 @@ $(document).ready(function() {
         var $preloader = $('#page-preloader'),
                 $spinner = $preloader.find('.spinner');
         $spinner.fadeOut();
-        $preloader.delay(350).fadeOut(800);
+        $preloader.delay(350).fadeOut(800, function(){
+
+            sxdCheckIfError();
+
+        });
     });
 
     // Hovers in dream team for touch screen
